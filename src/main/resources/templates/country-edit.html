@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Editar pais</title>
+</head>
+<body>
+
+
+<div class="container">
+    <h3>Editar pais</h3>
+
+    <div>
+
+        <form action="#" method="post"
+              th:object="${country}"
+              th:action="@{/country/update/{id}(id=${country.countryId})}"
+        >
+            <div class="form-group">
+                <label for="id">Id</label>
+                <input type="text" class="class-controller form-control"
+                       id="id" placeholder="Id"
+                       th:field="*{countryId}"
+                       disabled
+                >
+            </div>
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="class-controller form-control"
+                       id="nombre" placeholder="Ingrese nombre del pais"
+                       th:field="*{name}"
+                >
+            </div>
+
+
+            <button type="submit" class="btn btn-primary">
+                Agregar pais
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

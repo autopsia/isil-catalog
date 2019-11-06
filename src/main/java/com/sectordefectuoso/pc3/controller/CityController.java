@@ -27,17 +27,18 @@ public class CityController {
     @PostMapping("/city/save")
     public String save(City city, Model model) {
         cityService.create(city);
+        getList(model);
         return "city";
     }
 
-    @GetMapping("/citys/add")
+    @GetMapping("/city/add")
     public String add(Model model) {
         model.addAttribute("city", new City());
         return "city-add";
     }
 
     @GetMapping("/city/edit/{id}")
-    public String getForUpdate(@PathVariable String id, Model model) {
+    public String getForUpdate(@PathVariable Long id, Model model) {
         City currentCity = cityService.findById(id);
         model.addAttribute("city", currentCity);
         return "city-edit";
@@ -46,12 +47,12 @@ public class CityController {
     @PostMapping("/city/update/{id}")
     public String update(@PathVariable String id, City city, Model model) {
         cityService.update(city);
-        return "city";
+        return getList(model);
     }
 
     @GetMapping("/city/delete/{id}")
-    public String delete(@PathVariable String id, Model model) {
-        cityService.delete(Long.parseLong(id));
-        return "city";
+    public String delete(@PathVariable Long id, Model model) {
+        cityService.delete(id);
+        return getList(model);
     }
 }

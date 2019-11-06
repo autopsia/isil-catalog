@@ -10,30 +10,34 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Listado de Countryos</title>
+    <title>Listado de Ciudades</title>
 </head>
 <body>
 
 
 <div class="container">
-    <h3>Listado de Countryos</h3>
+    <h3>Listado de Ciudades</h3>
     <div class="col-md-12">
-        <a th:href="@{/city/add}" class="btn btn-primary">Agregar Country</a>
+        <a th:href="@{/city/add}" class="btn btn-primary">Agregar ciudad</a>
     </div>
+    <br>
 
     <div th:switch="citys">
         <div th:case="*">
-            <table class="table">
-                <thead>
+            <table class="table table-striped">
+                <thead class="thead-dark">
                 <tr>
-                    <th scope="col">sku</th>
-                    <th scope="col">name</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Ciudad</th>
+                    <th scope="col">Pais</th>
+                    <th scope="col"></th>
                 </tr>
                 </thead>
                 <tbody>
                 <tr th:each="city : ${citys}">
                     <th scope="row" th:text="${city.cityId}"></th>
                     <td th:text="${city.name}"></td>
+                    <td th:text="${city.countryName}"></td>
 
                     <td class="text-right">
                         <div class="btn-group">
@@ -42,8 +46,8 @@
                                     (id=${city.cityId})}"
                                class="btn btn-primary btn-sm">Editar</a>
 
-                            <a th:href="@{/citys/delete/{id}
-                                (sku=${city.cityId})}"
+                            <a th:href="@{/city/delete/{id}
+                                (id=${city.cityId})}"
                                class="btn btn-danger btn-sm">Eliminar</a>
 
                         </div>

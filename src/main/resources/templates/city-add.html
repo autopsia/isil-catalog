@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <title>Agregar ciudad</title>
+</head>
+<body>
+
+
+<div class="container">
+    <h3>Agregar ciudad</h3>
+
+    <div>
+
+        <form action="#" method="post"
+              th:object="${city}"
+              th:action="@{/city/save}"
+        >
+            <div class="form-group">
+                <label for="nombre">Nombre</label>
+                <input type="text" class="class-controller form-control"
+                       id="nombre" placeholder="Ingrese nombre del ciudad"
+                       th:field="*{name}"
+                >
+            </div>
+            <div class="form-group">
+                <label for="idCountry">Nombre</label>
+                <input type="text" class="class-controller form-control"
+                       id="idCountry" placeholder="Ingrese nombre del ciudad"
+                       th:field="*{name}"
+                >
+            </div>
+
+            <button type="submit" class="btn btn-primary">
+                Agregar ciudad
+            </button>
+
+
+        </form>
+
+
+    </div>
+
+
+</div>
+
+
+</body>
+</html>

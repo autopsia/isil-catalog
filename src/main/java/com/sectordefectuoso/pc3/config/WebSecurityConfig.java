@@ -16,7 +16,7 @@ public class WebSecurityConfig
 
         http
                 .authorizeRequests()
-                .antMatchers("/", "/index").permitAll()
+                .antMatchers("/", "/index", "/h2_console/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin()
@@ -30,7 +30,6 @@ public class WebSecurityConfig
                     .permitAll()
                     .logoutSuccessUrl("/login?logout")
                 ;
-
 
     }
 }

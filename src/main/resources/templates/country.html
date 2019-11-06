@@ -10,28 +10,30 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Listado de Countryos</title>
+    <title>Listado de Paises</title>
 </head>
 <body>
 
 
 <div class="container">
-    <h3>Listado de Countryos</h3>
+    <h3>Listado de Paises</h3>
     <div class="col-md-12">
-        <a th:href="@{/country/add}" class="btn btn-primary">Agregar Country</a>
+        <a th:href="@{/country/add}" class="btn btn-primary">Agregar pais</a>
     </div>
-
-    <div th:switch="countrys">
+    <br>
+    <div th:switch="country">
         <div th:case="*">
-            <table class="table">
+            <table class="table table-striped">
                 <thead>
                 <tr>
                     <th scope="col">id</th>
                     <th scope="col">name</th>
+                    <th scope="col"></th>
+
                 </tr>
                 </thead>
                 <tbody>
-                <tr th:each="country : ${countrys}">
+                <tr th:each="country : ${country}">
                     <th scope="row" th:text="${country.countryId}"></th>
                     <td th:text="${country.name}"></td>
 
@@ -42,7 +44,7 @@
                                     (id=${country.countryId})}"
                                class="btn btn-primary btn-sm">Editar</a>
 
-                            <a th:href="@{/countrys/delete/{id}
+                            <a th:href="@{/country/delete/{id}
                                 (id=${country.countryId})}"
                                class="btn btn-danger btn-sm">Eliminar</a>
 

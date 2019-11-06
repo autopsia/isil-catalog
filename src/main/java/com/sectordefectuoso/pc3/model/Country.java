@@ -10,11 +10,11 @@ import java.util.List;
 @AllArgsConstructor
 @Data
 public class Country {
-    private int countryId;
+    private Long countryId;
     private String name;
     private List<City> cities;
 
-    public Country(int countryId, String name) {
+    public Country(Long countryId, String name) {
         this.countryId = countryId;
         this.name = name;
     }

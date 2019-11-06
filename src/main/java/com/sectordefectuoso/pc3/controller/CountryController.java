@@ -20,38 +20,40 @@ public class CountryController {
     @GetMapping("/country")
     public String getList(Model model) {
         List<Country> countrys = countryService.findAll();
-        model.addAttribute("countrys", countrys);
+        model.addAttribute("country", countrys);
         return "country";
     }
 
     @PostMapping("/country/save")
     public String save(Country country, Model model) {
         countryService.create(country);
+        getList(model);
         return "country";
     }
 
-    @GetMapping("/countrys/add")
+    @GetMapping("/country/add")
     public String add(Model model) {
         model.addAttribute("country", new Country());
         return "country-add";
     }
 
     @GetMapping("/country/edit/{id}")
-    public String getForUpdate(@PathVariable String id, Model model) {
+    public String getForUpdate(@PathVariable Long id, Model model) {
         Country currentCountry = countryService.findById(id);
         model.addAttribute("country", currentCountry);
         return "country-edit";
     }
 
     @PostMapping("/country/update/{id}")
-    public String update(@PathVariable String id, Country country, Model model) {
+    public String update(@PathVariable Long id, Country country, Model model) {
+        country.setCountryId(id);
         countryService.update(country);
-        return "country";
+        return getList(model);
     }
 
     @GetMapping("/country/delete/{id}")
-    public String delete(@PathVariable String id, Model model) {
-        countryService.delete(Long.parseLong(id));
-        return "country";
+    public String delete(@PathVariable Long id, Model model) {
+        countryService.delete(id);
+        return getList(model);
     }
 }

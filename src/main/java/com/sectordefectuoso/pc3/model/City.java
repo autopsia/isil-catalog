@@ -8,7 +8,11 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Data
 public class City {
-    private int cityId;
+    private Long cityId;
     private String  name;
-    private int countryId;
+    private Long countryId;
+    private String countryName;
+
+
+
 }

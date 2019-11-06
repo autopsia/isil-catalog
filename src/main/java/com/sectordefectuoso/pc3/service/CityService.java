@@ -3,8 +3,8 @@ package com.sectordefectuoso.pc3.service;
 import com.sectordefectuoso.pc3.model.City;
 import com.sectordefectuoso.pc3.repository.JdbcCityRepository;
 import com.sectordefectuoso.pc3.repository.JdbcCountryRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.rmi.runtime.Log;
 
 import java.util.ArrayList;
 import java.util.Collections;
@@ -12,8 +12,8 @@ import java.util.List;
 import java.util.logging.Logger;
 
 @Service
-public class CityService implements GenericService<City, String> {
-
+public class CityService implements GenericService<City, Long> {
+    @Autowired
     JdbcCityRepository repository;
     @Override
     public void create(City city) {
@@ -41,7 +41,7 @@ public class CityService implements GenericService<City, String> {
     }
 
     @Override
-    public City findById(String id) {
-        return repository.findById(Long.parseLong(id));
+    public City findById(Long id) {
+        return repository.findById(id);
     }
 }

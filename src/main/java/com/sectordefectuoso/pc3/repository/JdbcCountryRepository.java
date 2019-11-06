@@ -24,13 +24,13 @@ public class JdbcCountryRepository
 
     @Override
     public void update(Country country) {
-        final String sql = "update country set name = ? where id = ?";
+        final String sql = "update country set name = ? where countryId = ?";
         jdbcTemplate.update(sql, country.getName(), country.getCountryId());
     }
 
     @Override
     public void delete(Long id) {
-        final String sql = "delete country where id = ?";
+        final String sql = "delete from country where countryId = ?";
         jdbcTemplate.update(sql, id);
     }
 
@@ -43,7 +43,7 @@ public class JdbcCountryRepository
 
     @Override
     public Country findById(Long id) {
-        final String sql = "select * from country where id = ?";
+        final String sql = "select * from country where countryId = ?";
         return jdbcTemplate.queryForObject(sql,
                 new Object[]{id},
                 JdbcCountryRepository::CountryRowMapper);
@@ -51,7 +51,7 @@ public class JdbcCountryRepository
 
     private static Country CountryRowMapper(ResultSet resultSet, int i)
             throws SQLException {
-        int rsId = resultSet.getInt("countryId");
+        Long rsId = resultSet.getLong("countryId");
         String name = resultSet.getString("name");
         return new Country(rsId, name);
     }

@@ -25,28 +25,25 @@ public class JdbcCityRepository
 
     @Override
     public void update(City city) {
-        final String sql = "update city set name = ?, countryId = ? where id = ?";
-        jdbcTemplate.update(sql, city.getName(), city.getCityId(), city.getCountryId());
+        final String sql = "update city set name = ?, countryId = ? where cityId = ?";
+        jdbcTemplate.update(sql, city.getName(), city.getCountryId(), city.getCityId());
     }
 
     @Override
     public void delete(Long id) {
-        final String sql = "delete city where id = ?";
+        final String sql = "delete from city where cityId = ?";
         jdbcTemplate.update(sql, id);
     }
 
     @Override
     public List<City> findAll() {
-        final String sql = "select * from city";
+        final String sql = "select ci.*, co.countryId, co.name AS countryName from city ci JOIN Country co ON (ci.countryId = co.countryId)";
         List<City> cities = jdbcTemplate.query(sql, JdbcCityRepository::CityRowMapper);
         return cities;
-
     }
-
-
     @Override
     public City findById(Long id) {
-        final String sql = "select * from city where id = ?";
+        final String sql = "select ci.*, co.countryId, co.name AS countryName from city ci JOIN Country co ON (ci.countryId = co.countryId) where cityId = ?";
         return jdbcTemplate.queryForObject(sql,
                 new Object[]{id},
                 JdbcCityRepository::CityRowMapper);
@@ -54,9 +51,10 @@ public class JdbcCityRepository
 
     private static City CityRowMapper(ResultSet resultSet, int i)
             throws SQLException {
-        int rsId = resultSet.getInt("cityId");
+        Long rsId = resultSet.getLong("cityId");
         String name = resultSet.getString("name");
-        int country = resultSet.getInt("countryId");
-        return new City(rsId, name, country);
+        Long country = resultSet.getLong("countryId");
+        String countryName = resultSet.getString("countryName");
+        return new City(rsId, name, country, countryName);
     }
 }
