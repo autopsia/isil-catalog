@@ -8,25 +8,68 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <title>Menu</title>
+    <style>
+        html,
+        body {
+          height: 100%;
+          color: #fff;
+        }
+
+        body {
+          display: -ms-flexbox;
+          display: -webkit-box;
+          display: flex;
+          -ms-flex-align: center;
+          -ms-flex-pack: center;
+          -webkit-box-align: center;
+          align-items: center;
+          -webkit-box-pack: center;
+          justify-content: center;
+          padding-top: 40px;
+          padding-bottom: 40px;
+        }
+
+        .form-signin {
+          width: 100%;
+          max-width: 330px;
+          padding: 15px;
+          margin: 0 auto;
+        }
+        .form-signin .checkbox {
+          font-weight: 400;
+        }
+        .form-signin .form-control {
+          position: relative;
+          box-sizing: border-box;
+          height: auto;
+          padding: 10px;
+          font-size: 16px;
+        }
+        .form-signin .form-control:focus {
+          z-index: 2;
+        }
+        .form-signin input[type="email"] {
+          margin-bottom: -1px;
+          border-bottom-right-radius: 0;
+          border-bottom-left-radius: 0;
+        }
+        .form-signin input[type="password"] {
+          margin-bottom: 10px;
+          border-top-left-radius: 0;
+          border-top-right-radius: 0;
+        }
+    </style>
 </head>
-<body>
-
-    <nav class="navbar navbar-light bg-light">
-        <a href="" class="navbar-brand">Mi Web</a>
-        <h1 th:inline="text"> Hola [[${#httpServletRequest.remoteUser}]]</h1>
-
-        <form th:action="@{/logout}" class="form-inline" method="post">
-
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">
-                Salir
-            </button>
-
-        </form>
-
-    </nav>
-
-    <a href="country.html">Paises</a>
-    <a href="city.html">Ciudades</a>
-
+<body class="text-center bg-dark">
+<div class="form-signin">
+    <h1 th:inline="text"> Hola [[${#httpServletRequest.remoteUser}]]</h1>
+    <a th:href="@{/city}" class="btn btn-primary btn-block mb-3">Ciudades</a>
+    <a th:href="@{/country}" class="btn btn-success btn-block mb-3">Paises</a>
+    <form th:action="@{/logout}" method="post">
+        <button class="btn btn-outline-danger btn-block mb-3" type="submit">
+            Salir
+        </button>
+    </form>
+</div>
 </body>
 </html>

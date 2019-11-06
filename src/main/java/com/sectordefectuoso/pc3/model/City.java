@@ -13,6 +13,9 @@ public class City {
     private Long countryId;
     private String countryName;
 
-
-
+    public City(Long cityId, String name, Long countryId) {
+        this.cityId = cityId;
+        this.name = name;
+        this.countryId = countryId;
+    }
 }

@@ -19,7 +19,7 @@ public class JdbcCityRepository
 
     @Override
     public void create(City city) {
-        final String sql = "insert into city(name) values (?,?)";
+        final String sql = "insert into city(name, countryId) values (?,?)";
         jdbcTemplate.update(sql, city.getName(), city.getCountryId());
     }
 

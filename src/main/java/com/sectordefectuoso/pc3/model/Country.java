@@ -12,10 +12,4 @@ import java.util.List;
 public class Country {
     private Long countryId;
     private String name;
-    private List<City> cities;
-
-    public Country(Long countryId, String name) {
-        this.countryId = countryId;
-        this.name = name;
-    }
 }

@@ -1,7 +1,9 @@
 package com.sectordefectuoso.pc3.controller;
 
 import com.sectordefectuoso.pc3.model.City;
+import com.sectordefectuoso.pc3.model.Country;
 import com.sectordefectuoso.pc3.service.CityService;
+import com.sectordefectuoso.pc3.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,6 +18,8 @@ public class CityController {
 
     @Autowired
     private CityService cityService;
+    @Autowired
+    private CountryService countryService;
 
     @GetMapping("/city")
     public String getList(Model model) {
@@ -33,19 +37,24 @@ public class CityController {
 
     @GetMapping("/city/add")
     public String add(Model model) {
+        List<Country> currentCountries = countryService.findAll();
         model.addAttribute("city", new City());
+        model.addAttribute("countrys", currentCountries);
         return "city-add";
     }
 
     @GetMapping("/city/edit/{id}")
     public String getForUpdate(@PathVariable Long id, Model model) {
         City currentCity = cityService.findById(id);
+        List<Country> currentCountries = countryService.findAll();
         model.addAttribute("city", currentCity);
+        model.addAttribute("countrys", currentCountries);
         return "city-edit";
     }
 
     @PostMapping("/city/update/{id}")
-    public String update(@PathVariable String id, City city, Model model) {
+    public String update(@PathVariable Long id, City city, Model model) {
+        city.setCityId(id);
         cityService.update(city);
         return getList(model);
     }
