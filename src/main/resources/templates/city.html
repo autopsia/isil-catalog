@@ -12,19 +12,17 @@
 
     <title>Listado de Ciudades</title>
 </head>
-<body>
+<body class="bg-dark">
 
 
 <div class="container">
-    <h3>Listado de Ciudades</h3>
-    <div class="col-md-12">
-        <a th:href="@{/city/add}" class="btn btn-primary">Agregar ciudad</a>
-    </div>
-    <br>
+    <h3 class="text-white">Listado de Ciudades</h3>
+
+        <a th:href="@{/city/add}" class="btn btn-primary mb-3">Agregar ciudad</a>
 
     <div th:switch="citys">
         <div th:case="*">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered table-condensed table-dark">
                 <thead class="thead-dark">
                 <tr>
                     <th scope="col">Id</th>
