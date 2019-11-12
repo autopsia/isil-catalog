@@ -21,7 +21,7 @@ public class CityController {
     @Autowired
     private CountryService countryService;
 
-    @GetMapping("/city")
+    @GetMapping(value = {"/city","/country/list-cities/"})
     public String getList(Model model) {
         List<City> citys = cityService.findAll();
         model.addAttribute("citys", citys);

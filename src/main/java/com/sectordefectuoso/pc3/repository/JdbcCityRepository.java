@@ -49,7 +49,7 @@ public class JdbcCityRepository
                 JdbcCityRepository::CityRowMapper);
     }
 
-    private static City CityRowMapper(ResultSet resultSet, int i)
+    public static City CityRowMapper(ResultSet resultSet, int i)
             throws SQLException {
         Long rsId = resultSet.getLong("cityId");
         String name = resultSet.getString("name");

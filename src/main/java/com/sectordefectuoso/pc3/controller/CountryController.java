@@ -1,5 +1,6 @@
 package com.sectordefectuoso.pc3.controller;
 
+import com.sectordefectuoso.pc3.model.City;
 import com.sectordefectuoso.pc3.model.Country;
 import com.sectordefectuoso.pc3.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,5 +56,11 @@ public class CountryController {
     public String delete(@PathVariable Long id, Model model) {
         countryService.delete(id);
         return getList(model);
+    }
+    @GetMapping("/country/list-cities/{id}")
+    public String listCitiesByCountryId(@PathVariable Long id, Model model) {
+        List<City> cities = countryService.findCitiesByCountryId(id);
+        model.addAttribute("citys", cities);
+        return "city";
     }
 }

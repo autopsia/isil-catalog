@@ -1,5 +1,6 @@
 package com.sectordefectuoso.pc3.service;
 
+import com.sectordefectuoso.pc3.model.City;
 import com.sectordefectuoso.pc3.model.Country;
 import com.sectordefectuoso.pc3.repository.JdbcCountryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,6 +12,8 @@ import java.util.List;
 public class CountryService implements GenericService<Country, Long> {
     @Autowired
     JdbcCountryRepository repository;
+
+
     @Override
     public void create(Country country) {
         repository.create(country);
@@ -39,5 +42,9 @@ public class CountryService implements GenericService<Country, Long> {
     @Override
     public Country findById(Long id) {
         return repository.findById(id);
+    }
+
+    public List<City> findCitiesByCountryId(Long id) {
+        return repository.findCitiesByCountryId(id);
     }
 }

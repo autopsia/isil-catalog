@@ -43,11 +43,12 @@
                             <a th:href="@{/country/edit/{id}
                                     (id=${country.countryId})}"
                                class="btn btn-primary btn-sm">Editar</a>
-
                             <a th:href="@{/country/delete/{id}
                                 (id=${country.countryId})}"
                                class="btn btn-danger btn-sm">Eliminar</a>
-
+                            <a th:href="@{/country/list-cities/{id}
+                                (id=${country.countryId})}"
+                               class="btn btn-info btn-sm">Ciudades</a>
                         </div>
                     </td>
 

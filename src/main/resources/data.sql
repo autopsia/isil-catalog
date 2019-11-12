@@ -14,7 +14,11 @@ insert into City(name, countryId) values ('Santa Cruz', 2);
 insert into City(name, countryId) values ('Sucre', 2);
 insert into City(name, countryId) values ('Caracas', 5);
 insert into City(name, countryId) values ('Ouro Preto', 4);
+insert into City(name, countryId) values ('Minas Gerais', 4);
 insert into City(name, countryId) values ('Jujuy', 6);
+insert into City(name, countryId) values ('Neuquén ', 6);
+insert into City(name, countryId) values ('Río Negro ', 6);
 insert into City(name, countryId) values ('Bogota', 7);
 insert into City(name, countryId) values ('Arica', 3);
+insert into City(name, countryId) values ('Valparaiso', 3);
 
